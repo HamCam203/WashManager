@@ -1,5 +1,6 @@
 import { useState,useEffect } from "react";
 import api from "../api";
+import Machines from "../components/Machines";
 
 function Home() {
     const [washingMachines, setWashingMachines] = useState([]);
@@ -24,16 +25,17 @@ function Home() {
 
     const deleteWashingMachine = (id) => {
         api
-            .delete(`/api/washing-machines/${id}/`)
+            .delete(`/api/washing-machines/delete/${id}/`)
             .then((res) => {
                 if (res.status === 204) {
                     alert("Washing machine deleted successfully");
                 }else{
                     alert("Failed to delete washing machine");
                 }
+                getWashingMachines();// Refresh the list after deletion
             })
             .catch((error) => alert(error));
-        getWashingMachines();// Refresh the list after deletion
+        
     }
 
     const addWashingMachine = (e) => {
@@ -51,16 +53,17 @@ function Home() {
                 }else{
                     alert("Failed to add washing machine");
                 }
+                getWashingMachines(); // Refresh the list after addition
             })
             .catch((error) => alert(error));
-        getWashingMachines(); // Refresh the list after addition
+        
     }
 
     return ( 
     <div>
         <div>
             <h2>Washing Machines</h2>
-
+            {washingMachines.map((machine) => <Machines key={machine.id} machines={machine} onDelete={deleteWashingMachine} />)}
         </div>
         <h2>Add Washing Machine</h2>
         <form onSubmit={addWashingMachine}>
