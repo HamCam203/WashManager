@@ -1,4 +1,5 @@
 import React from 'react';
+import "../styles/Machines.css";
 
 
 function Machines({ machines, onDelete }) {

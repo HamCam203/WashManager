@@ -1,6 +1,7 @@
 import { useState,useEffect } from "react";
 import api from "../api";
 import Machines from "../components/Machines";
+import "../styles/Home.css";
 
 function Home() {
     const [washingMachines, setWashingMachines] = useState([]);
