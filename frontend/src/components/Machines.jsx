@@ -20,7 +20,7 @@ function Machines({ machines, onDelete, onUpdate }) {
     return ( 
         <div className="machines-container">
             <p className="machine-name">{machines.name}</p>
-            <img src={machines.type === 'washer' ? washerImage : dryerImage} alt="Laverie automatique" width="300" />
+            <img src={machines.machine_type === 'washer' ? washerImage : dryerImage} alt="Laverie automatique" width="300" />
             
             {!isEditing ? (
                 <p className="machine-status">{machines.status}</p>

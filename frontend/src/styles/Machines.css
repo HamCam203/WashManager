@@ -291,29 +291,6 @@
   box-shadow: var(--shadow-sm);
 }
 
-/* Animation d'entrée */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Animation de pulsation pour statuts en cours */
-@keyframes pulse {
-  0%,
-  100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.8;
-  }
-}
-
 /* Responsive design */
 @media (max-width: 768px) {
   .machines-container {
