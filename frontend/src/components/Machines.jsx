@@ -23,7 +23,7 @@ function Machines({ machines, onDelete, onUpdate }) {
             <img src={machines.machine_type === 'washer' ? washerImage : dryerImage} alt="Laverie automatique" width="300" />
             
             {!isEditing ? (
-                <p className="machine-status">{machines.status}</p>
+                <p className={`machine-status ${machines.status}`}>{machines.status}</p>
             ) : (
                 <select 
                     className="status-select" 

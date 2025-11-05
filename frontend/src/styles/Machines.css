@@ -65,35 +65,28 @@
   margin: 0 0 0.75rem 0;
   transition: all 0.3s ease;
 }
-
-/* Statuts disponibles */
-.machine-status:is([class*="disponible"], [class*="available"]) {
-  background: linear-gradient(135deg, #d1fae5, #a7f3d0);
+.machine-status.available {
+  background: #d1fae5;
   color: #065f46;
-  border: 1px solid var(--success-green);
+  border: 2px solid #10b981;
 }
-
-/* Statuts en cours */
-.machine-status:is([class*="en-cours"], [class*="in-use"], [class*="in_use"]) {
-  background: linear-gradient(135deg, #fef3c7, #fde68a);
-  color: #92400e;
-  border: 1px solid #f59e0b;
-  animation: pulse 2s ease-in-out infinite;
-}
-
-/* Statuts hors service */
-.machine-status:is([class*="hors-service"], [class*="out-of-service"], [class*="out_of_order"]) {
-  background: linear-gradient(135deg, #fee2e2, #fecaca);
+.machine-status.in_use {
+  background: #fee2e2;
   color: #991b1b;
-  border: 1px solid var(--danger-red);
+  border: 2px solid #ef4444;
+}
+.machine-status.maintenance {
+  background: #fef3c7;
+  color: #92400e;
+  border: 2px solid #f59e0b;
+}
+.machine-status.out_of_order {
+  background: #e0e7ff;
+  color: #3730a3;
+  border: 2px solid #6366f1;
 }
 
-/* Statuts maintenance */
-.machine-status:is([class*="maintenance"]) {
-  background: linear-gradient(135deg, #dbeafe, #bfdbfe);
-  color: #1e3a8a;
-  border: 1px solid var(--primary-blue);
-}
+
 
 /* Select pour le statut */
 .status-select {
