@@ -38,6 +38,7 @@ function Home() {
             .catch((error) => alert(error));
         
     }
+    
 
     const addWashingMachine = (e) => {
         e.preventDefault(); // Prevent form submission
@@ -64,8 +65,8 @@ function Home() {
     <div>
         <div>
             <h2>Washing Machines</h2>
-            {washingMachines.map((machine) => <Machines key={machine.id} machines={machine} onDelete={deleteWashingMachine} />)}
-        </div>
+           <div className="machines-grid">{washingMachines.map((machine) => <Machines key={machine.id} machines={machine} onDelete={deleteWashingMachine} />)}
+        </div> </div> 
         <h2>Add Washing Machine</h2>
         <form onSubmit={addWashingMachine}>
             <label htmlFor="Name">Name:</label>
@@ -75,16 +76,32 @@ function Home() {
 
         <label htmlFor="Status">Status:</label>
         <br/>
-        <input type="text" id="status" value={status} required onChange={(e) => setStatus(e.target.value)} placeholder="Status"/>
+        <select
+            id="status"
+            value={status}
+            onChange={(e) => setStatus(e.target.value)}>
+            <option value="available">Disponible</option>
+            <option value="in_use">En cours d’utilisation</option>
+            <option value="maintenance">En maintenance</option>
+            <option value="out_of_order">Hors service</option>
+      </select>
         <label htmlFor="MachineType">Machine Type:</label>
         <br/>
-        <input type="text" id="machineType" value={machineType} required onChange={(e) => setMachineType(e.target.value)} placeholder="Machine Type"/>
+        <select
+            id="machineType"
+            value={machineType}
+            onChange={(e) => setMachineType(e.target.value)}
+            >
+            <option value="washer">Lave-linge</option>
+            <option value="dryer">Sèche-linge</option>
+        </select>
+
         <label htmlFor="CapacityKg">Capacity (kg):</label>
         <br/>
-        <input type="number" id="capacityKg" value={capacityKg} onChange={e => setCapacityKg(e.target.value)} required placeholder="Capacity (kg)" />
+        <input type="number" min="0" id="capacityKg" value={capacityKg} onChange={e => setCapacityKg(e.target.value)} required placeholder="Capacity (kg)" />
         <label htmlFor="PricePerCycle">Price per cycle (€):</label>
         <br/>
-        <input type="number" step="0.01" id="pricePerCycle" value={pricePerCycle} onChange={e => setPricePerCycle(e.target.value)} required placeholder="Price per cycle (€)" />
+        <input type="number" min="0" step="0.01" id="pricePerCycle" value={pricePerCycle} onChange={e => setPricePerCycle(e.target.value)} required placeholder="Price per cycle (€)" />
 
 
         <br/>

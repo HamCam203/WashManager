@@ -66,6 +66,29 @@ div > div:first-child > div:first-child {
   border: 1px solid var(--border-color);
 }
 
+/* Ajout du style pour la grille de vignettes de machines */
+.machines-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  padding: 1rem 0;
+}
+
+/* Responsive pour la grille */
+@media (max-width: 768px) {
+  .machines-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .machines-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
+
 /* Formulaire d'ajout */
 form {
   background: var(--bg-white);
@@ -94,7 +117,7 @@ label:first-of-type {
 
 /* Inputs */
 input[type="text"],
-input[type="number"] {
+input[type="number"],select {
   width: 100%;
   padding: 0.875rem 1rem;
   border: 2px solid var(--border-color);
