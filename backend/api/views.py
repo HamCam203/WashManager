@@ -8,32 +8,40 @@ from .models import WashingMachine
 # Create your views here.
 
 class WashingMachineListCreate(generics.ListCreateAPIView):
-    serializer_class = WashingMachineSerializer # Serializer for WashingMachine
-    permission_classes = [IsAuthenticated]  # Only authenticated users can access
+    serializer_class = WashingMachineSerializer
+    permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
         """Return washing machines associated with the authenticated user."""
-        user = self.request.user # Get the current authenticated user
-        return WashingMachine.objects.filter(current_user=user) # Return machines used by this user
+        user = self.request.user
+        return WashingMachine.objects.filter(current_user=user)
 
     def perform_create(self, serializer):
         """Set the current_user to the authenticated user on creation."""
         if serializer.is_valid():
-            serializer.save(current_user=self.request.user) # Set current_user to the authenticated user
-        else :
+            serializer.save(current_user=self.request.user)
+        else:
             print(serializer.errors)
 
 class WashingMachineDelete(generics.DestroyAPIView):
     serializer_class = WashingMachineSerializer
-    permission_classes = [IsAuthenticated]  # Only authenticated users can delete
+    permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
         """Return washing machines associated with the authenticated user."""
-        user = self.request.user # Get the current authenticated user
-        return WashingMachine.objects.filter(current_user=user) # Return machines used by this user
+        user = self.request.user
+        return WashingMachine.objects.filter(current_user=user)
 
+class WashingMachineUpdate(generics.UpdateAPIView):
+    serializer_class = WashingMachineSerializer
+    permission_classes = [IsAuthenticated]
+
+    def get_queryset(self):
+        """Return washing machines associated with the authenticated user."""
+        user = self.request.user
+        return WashingMachine.objects.filter(current_user=user)
 
 class CreateUserView(generics.CreateAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
-    permission_classes = [AllowAny]  # Allow anyone to create an account
+    permission_classes = [AllowAny]
