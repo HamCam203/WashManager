@@ -138,6 +138,7 @@ function Home() {
                 <br />
                 <input 
                     type="number" 
+                    min="0"
                     id="capacityKg" 
                     value={capacityKg} 
                     onChange={(e) => setCapacityKg(e.target.value)} 
@@ -149,6 +150,7 @@ function Home() {
                 <br />
                 <input 
                     type="number" 
+                    min="0"
                     step="0.01" 
                     id="pricePerCycle" 
                     value={pricePerCycle} 
