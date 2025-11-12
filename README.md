@@ -70,6 +70,7 @@ Le frontend sera accessible sur [http://localhost:5173](http://localhost:5173)
 npm run build
 npm start
 ```
+La base de données est déployé via [Choreo.dev](https://choreo.dev/)
 
 ## 📁 Structure du projet
 
