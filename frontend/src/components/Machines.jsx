@@ -3,16 +3,17 @@ import "../styles/Machines.css";
 import washerImage from '../assets/Washer.jpeg';
 import dryerImage from '../assets/Dryer.jpeg';
 
+// Component to display individual washing machine details and handle updates/deletions
 function Machines({ machines, onDelete, onUpdate }) {
     const [isEditing, setIsEditing] = useState(false);
     const [newStatus, setNewStatus] = useState(machines.status);
 
-    const handleUpdate = () => {
+    const handleUpdate = () => { // Call the onUpdate prop with the new status
         onUpdate(machines.id, newStatus);
         setIsEditing(false);
     };
 
-    const handleCancel = () => {
+    const handleCancel = () => { // Reset status and exit editing mode
         setNewStatus(machines.status);
         setIsEditing(false);
     };
@@ -42,7 +43,7 @@ function Machines({ machines, onDelete, onUpdate }) {
             <p className="machine-price">{machines.price_per_cycle} €</p>
             
             <div className="button-group">
-                {!isEditing ? (
+                {!isEditing ? ( //
                     <>
                         <button className="update-button" onClick={() => setIsEditing(true)}>
                             Modifier le statut

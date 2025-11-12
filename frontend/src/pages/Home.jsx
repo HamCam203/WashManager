@@ -4,6 +4,7 @@ import Machines from "../components/Machines";
 import "../styles/Home.css";
 
 function Home() {
+    // State variables for washing machines and form inputs
     const [washingMachines, setWashingMachines] = useState([]);
     const [name, setName] = useState("");
     const [status, setStatus] = useState("available");
@@ -11,11 +12,11 @@ function Home() {
     const [capacityKg, setCapacityKg] = useState("");
     const [pricePerCycle, setPricePerCycle] = useState("");
 
-    useEffect(() => {
+    useEffect(() => {// Fetch washing machines on component mount
         getWashingMachines();
     }, []);
 
-    const getWashingMachines = () => {
+    const getWashingMachines = () => {// Fetch washing machines from the API
         api
             .get("/api/washing-machines/")
             .then((res) => res.data)
@@ -26,7 +27,7 @@ function Home() {
             .catch((err) => alert(err));
     }
 
-    const deleteWashingMachine = (id) => {
+    const deleteWashingMachine = (id) => {// Delete a washing machine by ID
         api
             .delete(`/api/washing-machines/delete/${id}/`)
             .then((res) => {
@@ -40,7 +41,7 @@ function Home() {
             .catch((error) => alert(error));
     }
 
-    const updateWashingMachineStatus = (id, newStatus) => {
+    const updateWashingMachineStatus = (id, newStatus) => {// Update the status of a washing machine
         api
             .patch(`/api/washing-machines/update/${id}/`, { status: newStatus })
             .then((res) => {
@@ -57,7 +58,7 @@ function Home() {
             });
     }
 
-    const addWashingMachine = (e) => {
+    const addWashingMachine = (e) => {// Add a new washing machine
         e.preventDefault();
         api.post("/api/washing-machines/", {
             name,
