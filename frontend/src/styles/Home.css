@@ -242,3 +242,16 @@ div > div:first-child > div:first-child {
   color: #991b1b;
   border: 1px solid var(--danger-red);
 }
+
+
+.logout-button {
+  position: absolute;
+  background: var(--danger-red);
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.3s ease;
+}

@@ -87,6 +87,12 @@ function Home() {
     return (
         <div>
             <div>
+             {/* Add Logout Button  */}
+                <button className="logout-button" onClick={() => {window.location.href = '/logout';}}>
+                    Logout
+                </button>
+            </div>
+            <div className="machines-section">
                 <h2>Mes Machines à Laver</h2>
                 <div className="machines-grid">
                 {washingMachines.map((machine) => (
